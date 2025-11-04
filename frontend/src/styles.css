@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* --------------------
+    🎨 PALETA Y VARIABLES
+-------------------- */
+:root {
+  --bg: #0f172a;
+  --card: #0b1220;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #a78bfa;
+  --gradient: linear-gradient(160deg, #1e3a8a, #9333ea, #f472b6);
+  --border-radius: 16px;
+  --transition-fast: 0.3s ease;
+  --transition-slow: 0.8s ease;
+}
+
+/* --------------------
+    🌐 BASE GLOBAL
+-------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.6)), url('/icons/fondo.jpeg') center/cover no-repeat;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px; /* Padding por defecto para pantallas grandes */
+  transition: background var(--transition-slow), color 0.4s ease;
+  min-height: 100vh;
+  position: relative;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+/* --------------------
+    📦 ESTRUCTURA
+-------------------- */
+.container {
+  width: 100%;
+  max-width: 680px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--border-radius);
+  padding: 28px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.6);
+  transition: background 0.4s ease, color 0.4s ease;
+  backdrop-filter: blur(12px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 22px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  opacity: 0;
+  animation: fadeInText 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.card {
+  margin-top: 22px;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 36px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background 0.4s ease, color 0.4s ease;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.msg {
+  font-size: 20px;
+  line-height: 1.4;
+  opacity: 0;
+  animation: fadeInText 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.btn {
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.btn.accent {
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  color: #071022;
+  transition: all 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.btn.accent:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--accent), inset 0 0 0 1px var(--accent);
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* --------------------
+    🌅 MODO CLARO "AMANECER DORADO"
+-------------------- */
+body.light {
+  --bg: #fff7ed;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #475569;
+  --accent: #f59e0b;
+
+  background: linear-gradient(rgba(255,247,237,0.6), rgba(255,247,237,0.6)), url('/icons/fondo.jpeg') center/cover no-repeat;
+  color: var(--text);
+}
+
+body.light .card {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.1);
+}
+
+body.light .btn.accent {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #f472b6);
+  color: #fff;
+}
+
+body.light .btn:hover {
+  box-shadow: inset 0 0 0 1px #f59e0b;
+}
+
+/* --------------------
+    🌌 MODO OSCURO "AURORA NOCTURNA"
+-------------------- */
+body.dark {
+  background: linear-gradient(rgba(15,23,42,0.6), rgba(49,46,129,0.6)), url('/icons/fondo.jpeg') center/cover no-repeat;
+}
+
+/* Animaciones base */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes textGlow {
+  0%, 100% { color: var(--muted); }
+  50% { color: var(--accent); }
+}
+
+/* Opcional: subtítulos con glow continuo */
+.subtitle-glow {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+/* --------------------
+    📱 AJUSTES RESPONSIVE (PARA MÓVILES)
+-------------------- */
+@media (max-width: 700px) {
+    /* 1. Base del Cuerpo: Elimina el padding horizontal en el cuerpo */
+    body {
+        padding: 32px 16px; /* Mantiene padding vertical, reduce horizontal */
+        align-items: flex-start; /* Alinea el contenido arriba en lugar de al centro vertical */
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    /* 2. Contenedor Principal: Se adapta al ancho completo */
+    .container {
+        padding: 24px 18px; /* Reduce el padding interno */
+        max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+        margin-top: 0; /* Asegura que el contenido comience cerca del borde superior */
+    }
+
+    /* 3. Tarjeta del Mensaje: Ajusta el padding para móviles */
+    .card {
+        padding: 24px 20px;
+        margin-top: 18px;
+    }
+    
+    .msg {
+        font-size: 16px; /* Reduce el tamaño de fuente del mensaje para mejor lectura */
+    }
+
+    /* 4. Encabezado y Botones: Ajusta tamaños pequeños */
+    .title {
+        font-size: 20px;
+    }
+    
+    .header {
+        flex-direction: row; /* Mantiene el título y el botón en la misma línea si hay espacio */
+    }
+
+    .btn {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
