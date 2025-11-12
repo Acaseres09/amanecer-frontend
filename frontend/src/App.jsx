@@ -3,7 +3,8 @@ import "./styles.css";
 
 // ✅ CAMBIO PARA PRODUCCIÓN: Vuelve a usar localhost como fallback.
 // La URL de producción (HTTPS) se inyectará en Vercel/Netlify usando VITE_BACKEND_URL.
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3500"; 
+const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:3500";
+ 
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("darkMode") === "true");
